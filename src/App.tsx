@@ -3,14 +3,17 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
 import Start from "./components/Start";
-
+import Question from "./components/Question";
 // Define action types
 type ActionType = { type: string; payload?: string[] };
 
 // Define state type
-interface StateProps {
+export interface StateProps {
   questions: string[];
   status: string;
+  index:number;
+  answer: null | number;
+  points: number;
 }
 
 // Define reducer function
@@ -27,6 +30,18 @@ function reducer(state: StateProps, action: ActionType) {
         ...state,
         status: "error",
       };
+    case "statusActive":
+      return {
+        ...state,
+        status: 'active',
+      };
+    case "newAnswer":
+      const question = state.questions.at(state.index);
+      return {
+          ...state,
+          answer: action.payload,
+          points: action.payload === question.correctOption ? state.points + question.points : state.points
+      }
     default:
       throw new Error("Unknown");
   }
@@ -35,10 +50,13 @@ function reducer(state: StateProps, action: ActionType) {
 const initialState: StateProps = {
   questions: [],
   status: "loading",
+  index: 0,
+  answer: null,
+  points: 0,
 };
 
 const App = () => {
-  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status, index, answer }, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -62,9 +80,11 @@ const App = () => {
 
         {status === "ready" && (
           <>
-           <Start questions={questions}/>
+           <Start questions={questions} dispatch={dispatch}/>
           </>
         )}
+
+        {status === "active" && <Question dispatch={dispatch} answer={answer} question={questions[index]}/>}
       </Main>
     </div>
   );
