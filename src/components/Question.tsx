@@ -1,6 +1,7 @@
 import React from "react";
 import { StateProps } from "../App";
 import Option from "./Option";
+import NextButton from "./NextButton";
 
 export default function Question({
   question,
@@ -19,7 +20,7 @@ export default function Question({
   const hasAnswered = answer !== null;
   return (
     <div className="question-container mx-auto  w-[60%] py-6 items-center">
-      <h2 className="text-xl font-semibold mb-6 text-center">
+      <h2 className="mb-6 text-xl font-semibold text-center">
         {question.question}
       </h2>
       <div className="options-container flex flex-col w-[50%] mx-auto">
@@ -32,7 +33,7 @@ export default function Question({
             } ${
               hasAnswered
                 ? index === question.correctOption
-                  ? "bg-green-300"
+                  ? "bg-green-500"
                   : "bg-yellow-700"
                 : ""
             } transition-all hover:bg-slate-600 w-full rounded-full p-3 my-2`}
@@ -41,6 +42,9 @@ export default function Question({
             {option}
           </button>
         ))}
+      </div>
+      <div className=" next-btn-container w-[50%] mx-auto flex justify-end mt-6">
+        <NextButton dispatch={dispatch}/>
       </div>
     </div>
   );
