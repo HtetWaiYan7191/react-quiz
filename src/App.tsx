@@ -7,6 +7,7 @@ import Question from "./components/Question";
 import ProgressBar from "./components/ProgressBar";
 import NextButton from "./components/NextButton";
 import FinishedScreen from "./components/FinishedScreen";
+import Timer from "./components/Timer";
 // Define action types
 type ActionType = { type: string; payload?: string[] };
 
@@ -18,8 +19,10 @@ export interface StateProps {
   answer: null | number;
   points: number;
   highScore:number;
+  secondsRemaining:number | null;
 }
 
+const SEC_PER_QUE = 20;
 // Define reducer function
 function reducer(state: StateProps, action: ActionType) {
   switch (action.type) {
@@ -38,6 +41,8 @@ function reducer(state: StateProps, action: ActionType) {
       return {
         ...state,
         status: "active",
+        secondsRemaining: state.questions.length * SEC_PER_QUE,
+
       };
     case "newAnswer":
       const question = state.questions[state.index];
@@ -65,6 +70,12 @@ function reducer(state: StateProps, action: ActionType) {
         return {
           ...initialState, questions: state.questions, status: 'ready', highScore: state.highScore
         }
+      case 'timeTick':
+          return {
+            ...state,
+            secondsRemaining: state.secondsRemaining !== null && state.secondsRemaining - 1,
+            status: state.secondsRemaining === 0 ? 'finished' : state.status
+          }
     default:
       throw new Error("Unknown");
   }
@@ -77,16 +88,17 @@ const initialState: StateProps = {
   answer: null,
   points: 0,
   highScore: 0,
+  secondsRemaining: null,
 };
 
 const App = () => {
-  const [{ questions, status, index, answer, points, highScore }, dispatch] = useReducer(
+  const [{ questions, status, index, answer, points, highScore, secondsRemaining }, dispatch] = useReducer(
     reducer,
     initialState
   );
   const totalPoints = questions
-    .map((question) => question.points)
-    .reduce((a, b) => a + b, 0);
+    .map((question:StateProps) => question.points)
+    .reduce((a:number, b:number) => a + b, 0);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -128,7 +140,8 @@ const App = () => {
               answer={answer}
               question={questions[index]}
             />
-            <div className=" next-btn-container w-[50%] mx-auto flex justify-end mt-6">
+            <div className=" next-btn-container w-[40%] mx-auto flex justify-between items-center mt-6">
+              <Timer secondsRemaining={secondsRemaining} dispatch={dispatch}/>
               <NextButton
                 dispatch={dispatch}
                 index={index}

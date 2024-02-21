@@ -28,7 +28,7 @@ export default function Question({
           <button
             key={option}
             onClick={() => dispatch({ type: "newAnswer", payload: index })}
-            className={`border-2 border-white/90 hover:ml-6 hover:border-white hover:border ${
+            className={`border-2 border-white/90 hover:ml-6  ${
               answer === index ? "ml-6" : ""
             } ${
               hasAnswered
