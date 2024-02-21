@@ -36,7 +36,9 @@ function reducer(state: StateProps, action: ActionType) {
         status: 'active',
       };
     case "newAnswer":
-      const question = state.questions.at(state.index);
+      const question = state.questions[state.index];
+      console.log(question);
+      console.log(action.payload)
       return {
           ...state,
           answer: action.payload,
@@ -62,7 +64,8 @@ const initialState: StateProps = {
 };
 
 const App = () => {
-  const [{ questions, status, index, answer }, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status, index, answer, points }, dispatch] = useReducer(reducer, initialState);
+  console.log(points);
   useEffect(() => {
     async function fetchData() {
       try {
