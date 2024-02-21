@@ -26,14 +26,14 @@ export default function Question({
       <div className="options-container flex flex-col w-[50%] mx-auto">
         {question.options.map((option, index) => (
           <button
-          key={option}
+            key={option}
             onClick={() => dispatch({ type: "newAnswer", payload: index })}
             className={`border-2 border-white/90 hover:ml-6 hover:border-white hover:border ${
               answer === index ? "ml-6" : ""
             } ${
               hasAnswered
                 ? index === question.correctOption
-                  ? "bg-green-500"
+                  ? "bg-sky-500"
                   : "bg-yellow-700"
                 : ""
             } transition-all  w-full rounded-full p-3 my-2`}
@@ -42,9 +42,6 @@ export default function Question({
             {option}
           </button>
         ))}
-      </div>
-      <div className=" next-btn-container w-[50%] mx-auto flex justify-end mt-6">
-        <NextButton dispatch={dispatch}/>
       </div>
     </div>
   );
