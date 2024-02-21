@@ -2,26 +2,26 @@
     "questions": [
       {
         "question": "What is the core library used for building user interfaces in React?",
-        "options": ["React", "ReactDOM", "React Native", "Redux"],
-        "correctOption": 0,
+        "options": ["ReactDOM", "React",  "React Native", "Redux"],
+        "correctOption": 1,
         "points": 10
       },
       {
         "question": "What hook is used to manage state in functional components?",
-        "options": ["useState", "useEffect", "useContext", "useReducer"],
-        "correctOption": 0,
+        "options": ["useEffect", "useContext", "useState", "useReducer"],
+        "correctOption": 2,
         "points": 10
       },
       {
         "question": "Which method is called to render a React component?",
-        "options": ["render()", "componentDidMount()", "componentWillUnmount()", "setState()"],
-        "correctOption": 0,
+        "options": [ "componentDidMount()", "componentWillUnmount()", "render()", "setState()"],
+        "correctOption": 2,
         "points": 10
       },
       {
         "question": "What is the purpose of JSX in React?",
-        "options": ["To define React components", "To style React components", "To query the DOM", "To handle asynchronous operations"],
-        "correctOption": 0,
+        "options": ["To style React components", "To define React components",  "To query the DOM", "To handle asynchronous operations"],
+        "correctOption":1,
         "points": 10
       },
       {
@@ -38,14 +38,14 @@
       },
       {
         "question": "What is the main benefit of using React's virtual DOM?",
-        "options": ["Improved performance", "Simplified syntax", "Built-in animations", "Server-side rendering"],
-        "correctOption": 0,
+        "options": ["Simplified syntax", "Built-in animations", "Server-side rendering", "Improved performance"],
+        "correctOption": 3,
         "points": 10
       },
       {
         "question": "Which package is commonly used for managing application state in larger React applications?",
-        "options": ["Redux", "Axios", "React Router", "Material-UI"],
-        "correctOption": 0,
+        "options": [ "Axios", "React Router", "Redux", "Material-UI"],
+        "correctOption": 2,
         "points": 10
       },
       {
@@ -56,8 +56,8 @@
       },
       {
         "question": "What is the purpose of the useRef hook in React?",
-        "options": ["To access DOM elements", "To manage state", "To handle events", "To fetch data from an API"],
-        "correctOption": 0,
+        "options": [ "To manage state", "To handle events", "To fetch data from an API", "To access DOM elements"],
+        "correctOption": 3,
         "points": 10
       },
       {
@@ -68,14 +68,14 @@
       },
       {
         "question": "What is the purpose of the useMemo hook in React?",
-        "options": ["To memoize values", "To manage state", "To handle events", "To fetch data from an API"],
-        "correctOption": 0,
+        "options": [ "To manage state", "To memoize values", "To handle events", "To fetch data from an API"],
+        "correctOption": 1,
         "points": 10
       },
       {
         "question": "Which method is used to update the state in React components?",
-        "options": ["setState", "updateState", "changeState", "modifyState"],
-        "correctOption": 0,
+        "options": ["updateState", "changeState", "modifyState", "setState"],
+        "correctOption": 3,
         "points": 10
       },
       {
@@ -86,8 +86,8 @@
       },
       {
         "question": "Which method is used to fetch data from an API in React?",
-        "options": ["fetch", "axios", "get", "api"],
-        "correctOption": 0,
+        "options": [ "axios", "get", "fetch", "api"],
+        "correctOption": 2,
         "points": 10
       }
     ]
