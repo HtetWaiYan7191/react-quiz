@@ -5,7 +5,7 @@ import NextButton from "./NextButton";
 import { useQuizz } from "../context/QuizzContext";
 
 export default function Question() {
-  const {questions, answer, dispatch} = useQuizz();
+  const {questions, index, answer, dispatch} = useQuizz();
   const question = questions.at(index);
   const hasAnswered = answer !== null;
   

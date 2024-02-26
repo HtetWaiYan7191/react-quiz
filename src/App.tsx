@@ -20,7 +20,7 @@ const App = () => {
       <Main>
         {status === "loading" && <Loader />}
 
-        {status === "error" && <p> Failed fetch quizz 😞</p>}
+        {status === "error" && <p className="text-center"> Failed fetch quizz 😞</p>}
 
         {status === "ready" && (
           <>
