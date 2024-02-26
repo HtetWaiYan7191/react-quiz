@@ -1,14 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StateProps } from "../App";
 import Option from "./Option";
 import NextButton from "./NextButton";
-import { useQuizz } from "../context/QuizzContext";
 
-export default function Question() {
-  const {questions, answer, dispatch} = useQuizz();
-  const question = questions.at(index);
+export default function Question({
+  question,
+  answer,
+  dispatch,
+}: {
+  question: {
+    question: string;
+    options: string[];
+    correctOption: number;
+    points: number;
+  };
+  dispatch: () => void;
+  answer: number | null;
+}) {
   const hasAnswered = answer !== null;
-  
   return (
     <div className="question-container mx-auto  w-[60%] py-6 items-center">
       <h2 className="mb-6 text-xl font-semibold text-center">

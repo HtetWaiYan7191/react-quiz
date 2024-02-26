@@ -1,12 +1,10 @@
 import React from 'react'
-import { useQuizz } from '../context/QuizzContext';
 
-export default function NextButton() {
-  const {dispatch, index, questions} = useQuizz();
+export default function NextButton({dispatch, index, questionsLength} : {dispatch: ({type} : {type:string}) => void;  index:number; questionsLength:number}) {
   return (
     <>
         {
-      index === questions.length - 1 ? (
+      index === questionsLength - 1 ? (
         <button onClick={() => dispatch({type: 'finished'})} className='px-8 py-2 rounded-full bg-slate-600 hover:bg-slate-700'>
           Finish
         </button>
